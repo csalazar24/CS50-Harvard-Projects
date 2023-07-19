@@ -106,24 +106,6 @@ bool lunhs_algorithm(long card_number)
 }
 
 /**
- * This function extracts the first two digits from the credit card number.
- * @param credit_cardnumber The credit card number
- * @param card_digits_size The number of digits in the credit card number
- * @return The first two digits of the credit card number
- */
-int get_first_two(long credit_cardnumber, int card_digits_size)
-{
-
-    for (int i = card_digits_size; i > 2; i--)
-    {
-        // Remove the last digit
-        credit_cardnumber = credit_cardnumber / 10;
-    }
-
-    return credit_cardnumber;
-}
-
-/**
  * This function determines the type of credit card based on the credit card number.
  * @param card_number The credit card number
  * @return The card type as a string ("AMEX", "MASTERCARD", "VISA", or "INVALID")
@@ -136,7 +118,7 @@ string classify_card(long card_number)
 
     // Extract the first two digits of the credit card number
     int first_two_numbers = 0;
-    first_two_numbers = get_first_two(card_number, card_digits_size);
+    first_two_numbers = card_number / (long)pow(10, card_digits_size - 2);
 
     // Extract the first digit from the first two numbers
     int first_number = 0;
